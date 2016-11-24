@@ -1,0 +1,21 @@
+{
+  "name": "lvplayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lessc": "lessc src/less/app.less src/css/app.css",
+    "lessc:watch": "watch 'lessc src/less/app.less src/css/app.css' ./src/less"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luyc/lvplayer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luyc/lvplayer/issues"
+  },
+  "homepage": "https://github.com/luyc/lvplayer#readme"
+}
