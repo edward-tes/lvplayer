@@ -32,9 +32,14 @@
 
         var $time = $("<div class='lv-controls-time'><span class='lv-controls-currenttime'>00:00</span> / <span class='lv-controls-duration'>00:00</span></div>")
 
-        var $progress = $("<div class='lv-controls-progress'><div class='lv-controls-progress-completed'></div></div>")
+        var $progress = $("<div class='lv-controls-progress'><div class='lv-controls-progress-completed'><div class='lv-controls-progress-toucher'></div></div></div>")
 
-        var $volume = $("<div class='lv-controls-volume'><i class='icon icon-volume'></i></div>")
+        var $volume = $("<div class='lv-controls-volume'><i class='icon icon-volume'></i></div>");
+
+				var $volumeSlider = $("<div class='lv-controls-volume-slider'><div class='lv-controls-volume-progress'>" + 
+															"<div class='lv-controls-volume-progress-completed'></div></div></div>");
+				$volume.append($volumeSlider);
+
 
         var $type = $("<div class='lv-controls-type'>高清</div>")
 
@@ -47,7 +52,6 @@
         var $full = $("<div class='lv-controls-full'><i class='icon icon-fullscreen'></i></div>")
 
         $full.on('click.full', methods.onFullClick_.bind(this));
-
 
         if (!data) {
           $(this).data('player', {
@@ -84,8 +88,13 @@
     },
     onTimeUpdate_: function() {
       var player = $(this).data('player').video.get(0);
+      var $progress = $(this).data('player').progress;
       var $time = $(this).data('player').time;
+			var currentTime = player.currentTime;
+			var duration = player.duration;
+			var completeProgress = (currentTime / duration) * 100 + '%';
       $time.find('.lv-controls-currenttime').text(methods.formatProgress(player.currentTime));
+			$progress.find('.lv-controls-progress-completed').css('width', completeProgress);
     },
     onPageFullClick_: function() {
       var isPageFull = $(this).data('player').isPageFull;
